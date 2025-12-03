@@ -3,12 +3,12 @@ project(minimal_slam)
 
 find_package(ament_cmake REQUIRED)
 
-install(DIRECTORY launch config urdf guides
+# Install essential directories
+install(DIRECTORY 
+  launch 
+  config 
+  urdf
   DESTINATION share/${PROJECT_NAME}/)
-
-install(PROGRAMS
-  scripts/imu_combiner.py
-  DESTINATION lib/${PROJECT_NAME}/)
 
 ament_package()
 

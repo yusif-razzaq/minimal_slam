@@ -1,0 +1,55 @@
+MINIMAL SLAM - Simple Ackermann Car SLAM Example
+================================================
+
+LAUNCH:
+-------
+Terminal 1:
+  source ~/dev_ws/install/setup.bash
+  ros2 launch minimal_slam slam.launch.py
+
+Terminal 2 (for teleop):
+  source ~/dev_ws/install/setup.bash
+  ros2 run teleop_twist_keyboard teleop_twist_keyboard
+
+
+WHAT IT DOES:
+------------
+✓ Starts Gazebo
+✓ Spawns simple Ackermann car (blue box with red LiDAR)
+✓ Starts SLAM Toolbox
+✓ Opens RViz
+
+
+CONTROLS (in Terminal 2):
+-------------------------
+  i = forward
+  , = backward
+  j = turn left
+  l = turn right
+  k = stop
+
+
+SAVE MAP:
+---------
+ros2 run nav2_map_server map_saver_cli -f ~/my_map
+
+
+PACKAGE STRUCTURE:
+------------------
+minimal_slam/
+├── urdf/ackermann_car.xacro    - Simple car with LiDAR
+├── config/slam.yaml             - SLAM parameters
+├── config/slam.rviz             - RViz config
+└── launch/slam.launch.py        - Launch everything
+
+
+PLUGINS USED:
+-------------
+- gazebo_ros_diff_drive: Provides odometry + TF + cmd_vel control
+- gazebo_ros_ray_sensor: LiDAR data
+- slam_toolbox: 2D SLAM
+- robot_state_publisher: TF for robot links
+
+
+That's it! Simple and minimal.
+
